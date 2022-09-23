@@ -50,18 +50,12 @@
             ,title: '用户数据表'
             ,cols: [[
                 {type: 'checkbox', fixed: 'left'}
-                ,{field:'id', title:'编号', width:80, fixed: 'left', unresize: true, sort: true}
-                ,{field:'country', title:'国家', width:80, edit: 'text'}
-                ,{field:'province', title:'省份', width:80, edit: 'text'}
-                ,{field:'patientName', title:'姓名', width:80, edit: 'text'}
-                ,{field:'patientType', title:'类型', width:60, edit: 'text'}
-                ,{field:'patientState', title:'状态', width:60, edit: 'text'}
-                ,{field:'createDatetime', title:'开始时间', width:120, templet:"<div> {{layui.util.toDateString(d.createDatetime,'yyyy-MM-dd') }} </div>"}
-                ,{field:'suretime', title:'确诊时间', width:120, templet:"<div> {{layui.util.toDateString(d.suretime,'yyyy-MM-dd') }} </div>"}
-                ,{field:'hardtime', title:'持续时间', width:120, templet:"<div> {{layui.util.toDateString(d.hardtime,'yyyy-MM-dd') }} </div>"}
-                ,{field:'curetime', title:'治愈时间', width:120, templet:"<div> {{layui.util.toDateString(d.curetime,'yyyy-MM-dd') }} </div>"}
-                ,{field:'dietime', title:'死亡时间', width:120, templet:"<div> {{layui.util.toDateString(d.dietime,'yyyy-MM-dd') }} </div>"}
-
+                ,{field:'uid', title:'编号', width:80, fixed: 'left', unresize: true, sort: true}
+                ,{field:'uName', title:'用户名', width:80, edit: 'text'}
+                ,{field:'uPassword', title:'密码', width:80, edit: 'text'}
+                ,{field:'uIdCard', title:'身份证', width:80, edit: 'text'}
+                ,{field:'uAddress', title:'地址', width:60, edit: 'text'}
+                ,{field:'uRegistrationTime', title:'开始时间', width:120, templet:"<div> {{layui.util.toDateString(d.createDatetime,'yyyy-MM-dd') }} </div>"}
                 ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
             ]]
             //,page: true
