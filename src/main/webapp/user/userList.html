@@ -167,34 +167,18 @@
             title: ['修改页面', 'font-size:18px;'],
             area: ['600px', '600px'],
             success: function(){
-                $("#id").val(data.id);
-                $("#country").val(data.country);
-                $("#province").val(data.province);
-                $("#patientName").val(data.patientName);
-
-                if("1" == data.patientType){
-                    $("#patientType").append("<option value='1' selected>"+'密接'+"</option> <option value='2'>"+'无症状'+"</option>");
-                }else{
-                    $("#patientType").append("<option value='1' >"+'密接'+"</option> <option value='2' selected>"+'无症状'+"</option>");
-                }
-
-                if("3" == data.patientState){
-                    $("#patientState").append("<option value='3' selected>"+'重症'+"</option> <option value='4'>"+'治愈'+"</option> <option value='5'>"+'疑似'+"</option>");
-                }else if("4" == data.patientState){
-                    $("#patientState").append("<option value='3' >"+'重症'+"</option> <option value='4' selected>"+'治愈'+"</option> <option value='5'>"+'疑似'+"</option>");
-                }else if("5" == data.patientState){
-                    $("#patientState").append("<option value='3' >"+'重症'+"</option> <option value='4' >"+'治愈'+"</option> <option value='5' selected>"+'疑似'+"</option>");
-                }
-
-                $("#createDatetime").val(layui.util.toDateString(data.createDatetime,'yyyy-MM-dd'));
+                $("#uid").val(data.uid);
+                $("#uName").val(data.uName);
+                $("#uPassword").val(data.uPassword);
+                $("#uIdCard").val(data.uIdCard);
+                $("#uAddress").val(data.uAddress);
+                $("#uRegistrationTime").val(layui.util.toDateString(data.uRegistrationTime,'yyyy-MM-dd'));
 
                 //渲染页面
                 layui.form.render();
             },
 
-
-            btn: ['提交', '取消']
-            ,yes: function(index, layero){
+            yes: function(index, layero){
 
                 //修改操作
                 $.get("/patient/updatePatient", $("#updatePatient").serialize(),
@@ -214,58 +198,45 @@
 
 <script type="text/html" id="updatePatientForm">
 
-    <form class="layui-form" id="updatePatient">
+    <form class="layui-form"  action="User/update()">
 
         <!-- 把id 作为隐藏域传过去 -->
-        <input type="hidden" name="id" id="id">
+        <input type="hidden" name="uid" id="uid">
 
         <div class="layui-form-item">
-            <label class="layui-form-label">国家</label>
+            <label class="layui-form-label">用户名</label>
             <div class="layui-input-block">
-                <input type="text" name="country" id="country" required  lay-verify="required" placeholder="请输入国家" autocomplete="off" class="layui-input">
+                <input type="text" name="uName" id="uName" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">省份</label>
+            <label class="layui-form-label">密码</label>
             <div class="layui-input-block">
-                <input type="text" name="province" id="province" required  lay-verify="required" placeholder="请输入省份" autocomplete="off" class="layui-input">
+                <input type="text" name="uPassword" id="uPassword" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">姓名</label>
+            <label class="layui-form-label">身份证</label>
             <div class="layui-input-block">
-                <input type="text" name="patientName" id="patientName" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+                <input type="text" name="uIdCard" id="uIdCard" required  lay-verify="required" placeholder="请输入身份证" autocomplete="off" class="layui-input">
             </div>
         </div>
-
         <div class="layui-form-item">
-            <label class="layui-form-label">类型</label>
+            <label class="layui-form-label">地址</label>
             <div class="layui-input-block">
-                <select name="patientType" id="patientType" lay-verify="required">
-
-                </select>
+                <input type="text" name="uAddress" id="uAddress" required  lay-verify="required" placeholder="请输入身份证" autocomplete="off" class="layui-input">
             </div>
         </div>
-
         <div class="layui-form-item">
-            <label class="layui-form-label">状态</label>
             <div class="layui-input-block">
-                <select name="patientState" id="patientState"  lay-verify="required">
-
-                </select>
+                <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
 
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label">开始时间</label>
-                <div class="layui-input-inline">
-                    <input type="date" name="createDatetime" id="createDatetime" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-        </div>
+
     </form>
 </script>
 

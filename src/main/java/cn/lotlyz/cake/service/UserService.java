@@ -11,5 +11,6 @@ public interface UserService {
     Map seeList();
     void addUser(User user);
     void cutOff(int id);
+    void updateUser(User user);
 }
 

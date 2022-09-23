@@ -29,10 +29,17 @@ public class UserController {
         userService.addUser(user);
         return "添加成功";
     }
+
     @RequestMapping ("cutOff()")
     public String  cutOff( int id ){
         userService.cutOff(id);
         return "删除成功";
+    }
+    @RequestMapping("update()")
+    @ResponseBody
+    public String update(User user){
+        userService.updateUser(user);
+        return "userList";
     }
 
 }
