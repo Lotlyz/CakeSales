@@ -1,4 +1,30 @@
 package cn.lotlyz.cake.service.impl;
 
-public class UserServiceImpl {
+import cn.lotlyz.cake.mapper.UserMapper;
+import cn.lotlyz.cake.model.User;
+import cn.lotlyz.cake.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@Service
+public class UserServiceImpl implements UserService {
+    @Autowired
+    public UserMapper userMapper;
+
+
+    @Override
+    public Map seeList() {
+        List<User> UserList = userMapper.findAll();
+
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("code",0);
+        map.put("msg","success");
+        map.put("count",1000);
+        map.put("data",UserList);
+        return map;
+    }
 }

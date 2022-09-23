@@ -60,8 +60,8 @@
         </bean>
 
         <!-- 扫描对应包下的注解，帮我们创建对象 -->
-<!--        <context:component-scan base-package="com.qf">-->
+        <context:component-scan base-package="cn.lotlyz.cake">
 <!--            <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
-<!--        </context:component-scan>-->
+        </context:component-scan>
 
 </beans>
