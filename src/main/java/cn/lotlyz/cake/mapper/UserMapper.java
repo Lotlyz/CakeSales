@@ -4,6 +4,7 @@ import cn.lotlyz.cake.model.User;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -19,4 +20,9 @@ public interface UserMapper {
 
     @Delete("delete  from user where uid=#{uid}")
     void deleteByid(int id);
+
+    @Update("update user set uName=#{uName},uPassword=#{uPassword}" +
+            ",uIdCard=#{uIdCard}," +
+            "uAddress=#{uAddress} where uid=#{uid}")
+    void updateUser(User user);
 }
