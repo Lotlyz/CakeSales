@@ -43,8 +43,11 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
 
-                <li class="layui-nav-item layui-nav-itemed">
+                <li class="layui-nav-item">
                     <a class="" href="javascript:;">蛋糕管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" onclick="openUrl('/cake/cakeList.html')">蛋糕列表</a></dd>
+                    </dl>
                 </li>
 
                 <li class="layui-nav-item">
