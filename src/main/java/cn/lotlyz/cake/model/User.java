@@ -1,6 +1,7 @@
 package cn.lotlyz.cake.model;
 
 import javax.xml.crypto.Data;
+import java.util.Date;
 
 
 public class User {
@@ -8,7 +9,7 @@ public class User {
     public String uName;
     public String uPassword;
     public String uIdCard;
-    public Data uRegistrationTime;
+    public Date uRegistrationTime;
     public String uAddress;
 
     public int getUid() {
@@ -43,11 +44,11 @@ public class User {
         this.uIdCard = uIdCard;
     }
 
-    public Data getuRegistrationTime() {
+    public Date getuRegistrationTime() {
         return uRegistrationTime;
     }
 
-    public void setuRegistrationTime(Data uRegistrationTime) {
+    public void setuRegistrationTime(Date uRegistrationTime) {
         this.uRegistrationTime = uRegistrationTime;
     }
 
