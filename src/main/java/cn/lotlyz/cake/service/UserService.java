@@ -9,4 +9,6 @@ import java.util.Map;
 @Service
 public interface UserService {
     Map seeList();
+    void addUser(User user);
 }
+

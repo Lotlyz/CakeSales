@@ -27,4 +27,9 @@ public class UserServiceImpl implements UserService {
         map.put("data",UserList);
         return map;
     }
+
+    @Override
+    public void addUser(User user) {
+        userMapper.insertUser(user);
+    }
 }

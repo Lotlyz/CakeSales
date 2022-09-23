@@ -40,7 +40,7 @@
 
         table.render({
             elem: '#test'
-            ,url:'patient/findByPage'/*tpa=https://www.layuiweb.com/test/table/demo1.json*/
+            ,url:'User/findAll()'/*tpa=https://www.layuiweb.com/test/table/demo1.json*/
             ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
             ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
                 title: '提示'
@@ -50,12 +50,12 @@
             ,title: '用户数据表'
             ,cols: [[
                 {type: 'checkbox', fixed: 'left'}
-                ,{field:'uid', title:'编号', width:80, fixed: 'left', unresize: true, sort: true}
-                ,{field:'uName', title:'用户名', width:80, edit: 'text'}
-                ,{field:'uPassword', title:'密码', width:80, edit: 'text'}
-                ,{field:'uIdCard', title:'身份证', width:80, edit: 'text'}
-                ,{field:'uAddress', title:'地址', width:60, edit: 'text'}
-                ,{field:'uRegistrationTime', title:'开始时间', width:120, templet:"<div> {{layui.util.toDateString(d.createDatetime,'yyyy-MM-dd') }} </div>"}
+                ,{field:'uid', title:'编号', width:180, fixed: 'left', unresize: true, sort: true}
+                ,{field:'uName', title:'用户名', width:180, edit: 'text'}
+                ,{field:'uPassword', title:'密码', width:180, edit: 'text'}
+                ,{field:'uIdCard', title:'身份证', width:180, edit: 'text'}
+                ,{field:'uAddress', title:'地址', width:160, edit: 'text'}
+                ,{field:'uRegistrationTime', title:'注册时间', width:200, templet:"<div> {{layui.util.toDateString(d.createDatetime,'yyyy-MM-dd') }} </div>"}
                 ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
             ]]
             //,page: true

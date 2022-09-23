@@ -71,12 +71,4 @@ public class User {
                 '}';
     }
 
-    public User(int uid, String uName, String uPassword, String uIdCard, Data uRegistrationTime, String uAddress) {
-        this.uid = uid;
-        this.uName = uName;
-        this.uPassword = uPassword;
-        this.uIdCard = uIdCard;
-        this.uRegistrationTime = uRegistrationTime;
-        this.uAddress = uAddress;
-    }
 }
