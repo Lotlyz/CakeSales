@@ -22,5 +22,3 @@
 <!--        <result column="dietime" property="dietime" jdbcType="TIMESTAMP" />-->
 <!--    </resultMap>-->
 </mapper>
-
-</mapper>
