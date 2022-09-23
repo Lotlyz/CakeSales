@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 配置mapper对应的名称空间 -->
+<mapper namespace="cn.lotlyz.cake.mapper.OrderMapper">
+
+<!--    <resultMap id="OrderMapper" type="cn.lotlyz.cake.model.Order">-->
+<!--        &lt;!&ndash; 主键用id标签 &ndash;&gt;-->
+<!--        <id column="id" property="id" jdbcType="INTEGER" />-->
+        <!-- 其他属性用result标签 -->
+<!--        <result column="country" property="country" jdbcType="VARCHAR" />-->
+<!--        <result column="province" property="province" jdbcType="VARCHAR" />-->
+<!--        <result column="patient_name" property="patientName" jdbcType="VARCHAR" />-->
+<!--        <result column="patient_type" property="patientType" jdbcType="VARCHAR" />-->
+<!--        <result column="patient_state" property="patientState" jdbcType="VARCHAR" />-->
+<!--        <result column="create_datetime" property="createDatetime" jdbcType="TIMESTAMP" />-->
+<!--        <result column="suretime" property="suretime" jdbcType="TIMESTAMP" />-->
+<!--        <result column="hardtime" property="hardtime" jdbcType="TIMESTAMP" />-->
+<!--        <result column="curetime" property="curetime" jdbcType="TIMESTAMP" />-->
+<!--        <result column="dietime" property="dietime" jdbcType="TIMESTAMP" />-->
+<!--    </resultMap>-->
