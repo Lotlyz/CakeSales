@@ -2,9 +2,117 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>蛋糕系统订单添加</title>
+    <title>订单添加</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
 </head>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+<script src="layui/layui.js"></script>
+
 <body>
-订单添加
+<form class="layui-form" action="">
+    <div class="layui-form-item">
+        <label class="layui-form-label">国家</label>
+        <div class="layui-input-block">
+            <input type="text" name="country" required  lay-verify="required" placeholder="请输入国家" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">省份</label>
+        <div class="layui-input-inline">
+            <input type="text" name="province" required  lay-verify="required" placeholder="请输入省份" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">姓名</label>
+        <div class="layui-input-inline">
+            <input type="text" name="patientName" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">类型</label>
+        <div class="layui-input-inline">
+            <select name="patientType" lay-verify="required">
+                <option value="">请选择</option>
+                <option value="1">密接</option>
+                <option value="2">无症状</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">状态</label>
+        <div class="layui-input-inline">
+            <select name="patientState" lay-verify="required">
+                <option value="">请选择</option>
+                <option value="3">重症</option>
+                <option value="4">治愈</option>
+                <option value="5">疑似</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">开始时间</label>
+            <div class="layui-input-inline">
+                <input type="text" name="createDatetime" id="createDatetime" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </div>
+
+    <!--    <div class="layui-form-item">-->
+    <!--        <div class="layui-inline">-->
+    <!--            <label class="layui-form-label">持续时间</label>-->
+    <!--            <div class="layui-input-inline">-->
+    <!--                <input type="text" name="suretime" id="suretime" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    //Demo
+    layui.use('form', function(){
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            //layer.msg(JSON.stringify(data.field));
+            return true;//true才会走action
+        });
+    });
+</script>
 </body>
+
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,laydate = layui.laydate;
+
+        //日期
+        laydate.render({
+            elem: '#createDatetime'
+        });
+        // laydate.render({
+        //     elem: '#suretime'
+        // });
+
+    });
+</script>
+
+
 </html>
