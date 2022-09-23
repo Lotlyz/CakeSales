@@ -10,5 +10,6 @@ import java.util.Map;
 public interface UserService {
     Map seeList();
     void addUser(User user);
+    void cutOff(int id);
 }
 

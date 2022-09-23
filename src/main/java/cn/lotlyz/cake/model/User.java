@@ -1,5 +1,9 @@
 package cn.lotlyz.cake.model;
 
+
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.xml.crypto.Data;
 import java.util.Date;
 
@@ -9,6 +13,7 @@ public class User {
     public String uName;
     public String uPassword;
     public String uIdCard;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     public Date uRegistrationTime;
     public String uAddress;
 

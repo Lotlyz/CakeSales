@@ -21,5 +21,6 @@
 <!--        <result column="curetime" property="curetime" jdbcType="TIMESTAMP" />-->
 <!--        <result column="dietime" property="dietime" jdbcType="TIMESTAMP" />-->
 <!--    </resultMap>-->
+</mapper>
 
 </mapper>
