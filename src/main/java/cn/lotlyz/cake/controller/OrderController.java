@@ -2,8 +2,11 @@ package cn.lotlyz.cake.controller;
 
 import cn.lotlyz.cake.model.Order;
 import cn.lotlyz.cake.service.OrderService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -26,12 +29,35 @@ public class OrderController {
     @RequestMapping("findAll")
     public Map findAll(){
         List<Order> orderList = orderService.findAll();
+        System.out.println(orderList.get(0));
+        System.out.println(orderList);
         HashMap<String, Object> map = new HashMap<>();
         map.put("code",0);
         map.put("msg","success");
         map.put("count",1000);
         map.put("data",orderList);
-
         return map;
     }
+
+    @RequestMapping("findByPage")
+    public Map findByPage(
+            @RequestParam(value = "page",required = false,defaultValue = "1") Integer pageNum,
+            @RequestParam(value = "limit",required = false,defaultValue = "3") Integer pageSize
+    ){
+        PageHelper.startPage(pageNum,pageSize);
+        //紧跟在PageHelper.startPage（）后才会被分页
+        List<Order> orderList = orderService.findAll();
+
+        //创建PageInfo对象
+        PageInfo<Order> pageInfo = new PageInfo<>(orderList);
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("code",0);
+        map.put("msg","success");
+        map.put("count",pageInfo.getTotal());//总记录数
+        map.put("data",pageInfo.getList());//分页数据
+
+        return map;
+
+    }
+
 }

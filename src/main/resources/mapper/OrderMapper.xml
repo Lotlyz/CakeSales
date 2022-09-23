@@ -6,19 +6,20 @@
 <!-- 配置mapper对应的名称空间 -->
 <mapper namespace="cn.lotlyz.cake.mapper.OrderMapper">
 
-<!--    <resultMap id="OrderMapper" type="cn.lotlyz.cake.model.Order">-->
-<!--        &lt;!&ndash; 主键用id标签 &ndash;&gt;-->
-<!--        <id column="id" property="id" jdbcType="INTEGER" />-->
-        <!-- 其他属性用result标签 -->
-<!--        <result column="country" property="country" jdbcType="VARCHAR" />-->
-<!--        <result column="province" property="province" jdbcType="VARCHAR" />-->
-<!--        <result column="patient_name" property="patientName" jdbcType="VARCHAR" />-->
-<!--        <result column="patient_type" property="patientType" jdbcType="VARCHAR" />-->
-<!--        <result column="patient_state" property="patientState" jdbcType="VARCHAR" />-->
-<!--        <result column="create_datetime" property="createDatetime" jdbcType="TIMESTAMP" />-->
-<!--        <result column="suretime" property="suretime" jdbcType="TIMESTAMP" />-->
-<!--        <result column="hardtime" property="hardtime" jdbcType="TIMESTAMP" />-->
-<!--        <result column="curetime" property="curetime" jdbcType="TIMESTAMP" />-->
-<!--        <result column="dietime" property="dietime" jdbcType="TIMESTAMP" />-->
-<!--    </resultMap>-->
+    <resultMap id="orderMap" type="cn.lotlyz.cake.model.Order">
+        <!-- 主键用id标签 -->
+        <id column="o_id" property="orderId" jdbcType="INTEGER" />
+        <!--         其他属性用result标签-->
+        <result column="uid" property="userId" jdbcType="INTEGER" />
+        <result column="c_id" property="cakeId" jdbcType="INTEGER" />
+        <result column="o_PAOtime" property="orderPtime" jdbcType="TIMESTAMP" />
+        <result column="o_Stime" property="orderStime" jdbcType="TIMESTAMP" />
+        <result column="o_price" property="orderPrice" jdbcType="DOUBLE" />
+        <result column="o_count" property="orderCount" jdbcType="INTEGER" />
+    </resultMap>
+    <!--  查找全部订单  -->
+    <select id="findAll" resultMap="orderMap">
+        SELECT * FROM cake.`order`
+    </select>
+
 </mapper>

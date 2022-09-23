@@ -41,28 +41,25 @@
 
         table.render({
             elem: '#test'
-            ,url:'patient/findByPage'/*tpa=https://www.layuiweb.com/test/table/demo1.json*/
+            ,url:'order/findAll'/*tpa=https://www.layuiweb.com/test/table/demo1.json*/
             ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
             ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
                 title: '提示'
                 ,layEvent: 'LAYTABLE_TIPS'
                 ,icon: 'layui-icon-tips'
             }]
-            ,title: '用户数据表'
+            ,title: '订单数据表'
             ,cols: [[
                 {type: 'checkbox', fixed: 'left'}
-                ,{field:'id', title:'编号', width:80, fixed: 'left', unresize: true, sort: true}
-                ,{field:'country', title:'国家', width:80, edit: 'text'}
-                ,{field:'province', title:'省份', width:80, edit: 'text'}
-                ,{field:'patientName', title:'姓名', width:80, edit: 'text'}
-                ,{field:'patientType', title:'类型', width:60, edit: 'text'}
-                ,{field:'patientState', title:'状态', width:60, edit: 'text'}
-                ,{field:'createDatetime', title:'开始时间', width:120, templet:"<div> {{layui.util.toDateString(d.createDatetime,'yyyy-MM-dd') }} </div>"}
-                ,{field:'suretime', title:'确诊时间', width:120, templet:"<div> {{layui.util.toDateString(d.suretime,'yyyy-MM-dd') }} </div>"}
-                ,{field:'hardtime', title:'持续时间', width:120, templet:"<div> {{layui.util.toDateString(d.hardtime,'yyyy-MM-dd') }} </div>"}
-                ,{field:'curetime', title:'治愈时间', width:120, templet:"<div> {{layui.util.toDateString(d.curetime,'yyyy-MM-dd') }} </div>"}
-                ,{field:'dietime', title:'死亡时间', width:120, templet:"<div> {{layui.util.toDateString(d.dietime,'yyyy-MM-dd') }} </div>"}
-
+                ,{field:'orderId', title:'订单编号', width:120, fixed: 'left', unresize: true, sort: true}
+                ,{field:'userId', title:'用户编号', width:120, edit: 'text'}
+                ,{field:'cakeId', title:'蛋糕编号', width:120, edit: 'text'}
+                // ,{field:'OrderPtime', title:'创建时间', width:120, edit: 'text' }
+                // ,{field:'OrderStime', title:'完成时间', width:120, edit: 'text' }
+                ,{field:'orderPtime', title:'创建时间', width:120, templet:"<div> {{layui.util.toDateString(d.orderPtime,'yyyy-MM-dd') }} </div>"}
+                ,{field:'orderStime', title:'完成时间', width:120, templet:"<div> {{layui.util.toDateString(d.orderStime,'yyyy-MM-dd') }} </div>"}
+                ,{field:'orderPrice', title:'订单金额', width:120, edit: 'text'}
+                ,{field:'orderCount', title:'蛋糕数量', width:120, edit: 'text'}
                 ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
             ]]
             //,page: true
