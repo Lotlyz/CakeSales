@@ -216,19 +216,21 @@
     }
 </script>
 
-<script>
-    function issue(data) {
+<!--<script>-->
+<!--    function issue(data) {-->
 
-        var  issueStatus = "已发布";
-        //修改操作
-        $.get("/coupon/updateCoupon", $("#updateCoupon").serialize(),
-            function (data) {
-                if ("success" == data) {
-                    location.reload();//刷新当前页面
-                }
-            });
-    }
-</script>
+<!--        var  issueStatus = "已发布";-->
+<!--        //修改操作-->
+<!--        $.get("/coupon/updateCoupon", $("#updateCoupon").serialize(),-->
+<!--            function (data) {-->
+<!--                if ("success" == data) {-->
+<!--                    location.reload();//刷新当前页面-->
+<!--                }-->
+<!--            });-->
+<!--    }-->
+<!--</script>-->
+
+
 <script>
     function queryOne(data) {
         layer.open({
@@ -253,8 +255,8 @@
                 layui.form.render();
             },
 
-            btn: ['提交', '取消'],
-            yes: function (index, layero) {
+            btn: ['提交', '取消']
+            , yes: function (index, layero) {
 
                 //修改操作
                 $.get("/coupon/updateCoupon", $("#updateCoupon").serialize(),

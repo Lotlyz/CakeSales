@@ -96,7 +96,7 @@ public class CouponController {
     @RequestMapping("updateCoupon")
     public String updateCoupon(Coupon coupon){
 
-        //System.out.println(patient);
+        System.out.println(coupon);
         couponService.updateCoupon(coupon);
 
         return "success";

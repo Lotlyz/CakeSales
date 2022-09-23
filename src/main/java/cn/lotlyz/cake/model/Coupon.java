@@ -2,6 +2,7 @@ package cn.lotlyz.cake.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -9,7 +10,9 @@ import java.util.Date;
  * @Author: Lotlyz
  * @Date: 2022/9/23
  */
-public class Coupon {
+public class Coupon implements Serializable {
+
+
     /** 优惠券表ID */
     private Integer id;
 
