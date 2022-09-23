@@ -4,82 +4,96 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 配置mapper对应的名称空间 -->
-<mapper namespace="com.qf.mapper.MedicalStaffMapper">
+<mapper namespace="cn.lotlyz.cake.mapper.CouponMapper">
 
-<!--    <resultMap id="medicalStaffMap" type="com.qf.pojo.MedicalStaff">-->
-<!--        &lt;!&ndash; 主键用id标签 &ndash;&gt;-->
-<!--        <id column="id" property="id" jdbcType="INTEGER" />-->
-<!--        &lt;!&ndash; 其他属性用result标签 &ndash;&gt;-->
-<!--        <result column="name" property="name" jdbcType="VARCHAR" />-->
-<!--        <result column="age" property="age" jdbcType="INTEGER" />-->
-<!--        <result column="zhiwei" property="zhiwei" jdbcType="VARCHAR" />-->
-<!--    </resultMap>-->
-<!--    -->
-<!--    &lt;!&ndash; 多个id查询 &ndash;&gt;-->
-<!--    <select id="findByIds" resultMap="medicalStaffMap">-->
-<!--        SELECT *-->
-<!--        FROM medicalstaff-->
-<!--        <where>-->
-<!--            id in-->
-<!--            <foreach collection="array"  open="(" close=")" separator="," item="id">-->
-<!--                #{id}-->
-<!--            </foreach>-->
-<!--        </where>-->
-<!--    </select>-->
+    <resultMap id="CouponMap" type="cn.lotlyz.cake.model.Coupon">
+        <!-- 主键用id标签 -->
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <!-- 其他属性用result标签 -->
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="type" property="type" jdbcType="INTEGER" />
+        <result column="coupon_price" property="couponPrice" jdbcType="VARCHAR" />
+        <result column="use_min_price" property="useMinPrice" jdbcType="VARCHAR" />
+        <result column="coupon_time" property="couponTime" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+        <result column="end_time" property="endTime" jdbcType="VARCHAR" />
+        <result column="cake_name" property="cakeName" jdbcType="VARCHAR" />
+        <result column="amount" property="amount" jdbcType="INTEGER" />
+    </resultMap>
 
-<!--    &lt;!&ndash; 批量插入 &ndash;&gt;-->
-<!--    <insert id="save">-->
-<!--        insert into medicalstaff(-->
-<!--        id,name,age,zhiwei-->
-<!--        )-->
-<!--        values-->
-<!--        <foreach collection="list" separator="," item="medicalstaff">-->
-<!--            (-->
-<!--            #{medicalstaff.id},-->
-<!--            #{medicalstaff.name},-->
-<!--            #{medicalstaff.age},-->
-<!--            #{medicalstaff.zhiwei}-->
-<!--            )-->
-<!--        </foreach>-->
-<!--    </insert>-->
+    <!-- 多个id查询 -->
+    <select id="findByIds" resultMap="CouponMap">
+        SELECT *
+        FROM coupon
+        <where>
+            id in
+            <foreach collection="array"  open="(" close=")" separator="," item="id">
+                #{id}
+            </foreach>
+        </where>
+    </select>
 
-<!--    &lt;!&ndash; 批量删除-->
-<!-- 方法的参数是数组，foreach标签中的collection="array"-->
-<!-- 方法的参数是list集合，foreach标签中的collection="list"-->
-<!-- &ndash;&gt;-->
-<!--    <delete id="batchDel">-->
-<!--        delete from medicalstaff-->
-<!--        <where>-->
-<!--            id in-->
-<!--            <foreach collection="array"  open="(" close=")" separator="," item="id">-->
-<!--                #{id}-->
-<!--            </foreach>-->
-<!--        </where>-->
-<!--    </delete>-->
+    <!-- 批量插入 -->
+    <insert id="save">
+        insert into coupon(
+        id,name,type,coupon_price,use_min_price,coupon_time,status,create_time,end_time,cake_name,amount
+        )
+        values
+        <foreach collection="list" separator="," item="coupon">
+            (
+            #{coupon.id},
+            #{coupon.name},
+            #{coupon.type},
+            #{coupon.couponPrice},
+            #{coupon.useMinPrice},
+            #{coupon.couponTime},
+            #{coupon.status},
+            #{coupon.createTime},
+            #{coupon.endTime},
+            #{coupon.cakeName},
+            #{coupon.amount}
+            )
+        </foreach>
+    </insert>
 
-<!--    &lt;!&ndash; 修改患者&ndash;&gt;-->
-<!--    <update id="updateMedicalStaff">-->
-<!--        update medicalstaff set name = #{name},age = #{age},zhiwei = #{zhiwei}-->
-<!--        where id = #{id}-->
-<!--    </update>-->
+    <!-- 批量删除
+方法的参数是数组，foreach标签中的collection="array"
+方法的参数是list集合，foreach标签中的collection="list"
+-->
+    <delete id="batchDel">
+        delete from coupon
+        <where>
+            id in
+            <foreach collection="array"  open="(" close=")" separator="," item="id">
+                #{id}
+            </foreach>
+        </where>
+    </delete>
 
-<!--    &lt;!&ndash; 删除单个 &ndash;&gt;-->
-<!--    <delete id="deleteById">-->
-<!--        delete from medicalstaff where id = #{id}-->
-<!--    </delete>-->
+    <!-- 修改患者-->
+    <update id="updateCoupon">
+        update coupon set
+                          name = #{name},type = #{type},coupon_price = #{couponPrice},use_min_price = #{useMinPrice},
+                          coupon_time = #{couponTime},status = #{status},create_time = #{createTime},end_time = #{endTime},
+                          cake_name = #{cakeName},amount = #{amount}
+        where id = #{id}
+    </update>
 
-<!--    &lt;!&ndash; 添加患者 &ndash;&gt;-->
-<!--    <insert id="add">-->
-<!--        insert into medicalstaff(name, age, zhiwei)-->
-<!--        values(#{name},#{age},#{zhiwei})-->
-<!--    </insert>-->
+    <!-- 删除单个 -->
+    <delete id="deleteById">
+        delete from coupon where id = #{id}
+    </delete>
 
-<!--    &lt;!&ndash; 查询所有患者，resultMap对应resultMap标签的id值 &ndash;&gt;-->
-<!--    <select id="findAll" resultMap="medicalStaffMap">-->
-<!--        SELECT id, name,age,zhiwei-->
-<!--        FROM medicalstaff-->
-<!--    </select>-->
+    <!-- 添加患者 -->
+    <insert id="add">
+        insert into coupon(name,type,coupon_price,use_min_price,coupon_time,status,create_time,end_time,cake_name,amount)
+        values(#{name},#{type},#{couponPrice},#{useMinPrice},#{couponTime},#{status},#{createTime},#{endTime},#{cakeName},#{amount})
+    </insert>
 
-
-
+    <!-- 查询所有患者，resultMap对应resultMap标签的id值 -->
+    <select id="findAll" resultMap="CouponMap">
+        SELECT *
+        FROM coupon
+    </select>
 </mapper>
