@@ -14,4 +14,6 @@ public interface OrderMapper {
    void deleteById(String id);
 
    void batchDel(Integer[] ids);
+
+   List<Order> findByIds(Integer[] ids);
 }

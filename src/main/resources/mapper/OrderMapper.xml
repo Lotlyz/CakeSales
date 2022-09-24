@@ -36,4 +36,17 @@
         </where>
     </delete>
 
+    <!--  多个id查询  -->
+    <select id="findByIds" resultMap="orderMap">
+        SELECT * FROM cake.`order`
+      <where>
+          o_id in
+          <foreach collection="array"  open="(" close=")" separator="," item="orderId">
+              #{orderId}
+          </foreach>
+      </where>
+    </select>
+
+
+
 </mapper>

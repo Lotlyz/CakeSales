@@ -26,4 +26,10 @@ public class OrderServiceImpl  implements OrderService {
     @Override
     public void batchDel(Integer[] ids) {orderMapper.batchDel(ids);}
 
+
+    @Override
+    public List<Order> findByIds(Integer[] ids) {
+        return orderMapper.findByIds(ids);
+    }
+
 }

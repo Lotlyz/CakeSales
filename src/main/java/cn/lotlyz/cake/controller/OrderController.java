@@ -2,6 +2,7 @@ package cn.lotlyz.cake.controller;
 
 import cn.lotlyz.cake.model.Order;
 import cn.lotlyz.cake.service.OrderService;
+import com.alibaba.excel.EasyExcel;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * 表现层（web层）：接收前端传递的数据，返回数据给前端
@@ -79,6 +81,34 @@ public class OrderController {
         return "success";
     }
 
+    @RequestMapping("wirteExcel")
+    public void wirteExcel(Integer [] ids, HttpServletResponse response) throws IOException {
+        //System.out.println(Arrays.toString(ids));
 
+        if(ids.length > 0){
+            List<Order> orderList = orderService.findByIds(ids);
+            System.out.println(orderList);
+            System.out.println("系统时间：" + System.currentTimeMillis() );
+
+            String time = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+            System.out.println(time);
+
+            // 写法2
+            //String fileName = "D:/patient-" + System.currentTimeMillis() + ".xlsx";
+            //String fileName = "D:/patient-" + time + ".xlsx";
+            // 这里 需要指定写用哪个class去写，然后写到第一个sheet，名字为模板 然后文件流会自动关闭
+            // 如果这里想使用03 则 传入excelType参数即可
+            //EasyExcel.write(fileName, Patient.class).sheet("患者列表").doWrite(patientList);
+
+            //以下载的方式打开
+            String fileName = "order-" + time + ".xlsx";
+            response.setHeader("Content-Disposition", "attachment;filename="+fileName);
+            //获取输出流
+            ServletOutputStream outputStream = response.getOutputStream();
+            //流的方式写入
+            EasyExcel.write(outputStream, Order.class).sheet("订单列表").doWrite(orderList);
+        }
+
+    }
 
 }
