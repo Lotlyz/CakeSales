@@ -12,67 +12,51 @@
 <body>
 <form class="layui-form" action="">
     <div class="layui-form-item">
-        <label class="layui-form-label">国家</label>
+        <label class="layui-form-label">用户编号</label>
         <div class="layui-input-block">
-            <input type="text" name="country" required  lay-verify="required" placeholder="请输入国家" autocomplete="off" class="layui-input">
+            <input type="text" name="userId" required  lay-verify="required" placeholder="请输入用户编号" autocomplete="off" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">省份</label>
+        <label class="layui-form-label">商品编号</label>
         <div class="layui-input-inline">
-            <input type="text" name="province" required  lay-verify="required" placeholder="请输入省份" autocomplete="off" class="layui-input">
-        </div>
-    </div>
-
-    <div class="layui-form-item">
-        <label class="layui-form-label">姓名</label>
-        <div class="layui-input-inline">
-            <input type="text" name="patientName" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
-        </div>
-    </div>
-
-    <div class="layui-form-item">
-        <label class="layui-form-label">类型</label>
-        <div class="layui-input-inline">
-            <select name="patientType" lay-verify="required">
-                <option value="">请选择</option>
-                <option value="1">密接</option>
-                <option value="2">无症状</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="layui-form-item">
-        <label class="layui-form-label">状态</label>
-        <div class="layui-input-inline">
-            <select name="patientState" lay-verify="required">
-                <option value="">请选择</option>
-                <option value="3">重症</option>
-                <option value="4">治愈</option>
-                <option value="5">疑似</option>
-            </select>
+            <input type="text" name="cakeId" required  lay-verify="required" placeholder="请输入商品编号" autocomplete="off" class="layui-input">
         </div>
     </div>
 
 
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">开始时间</label>
+            <label class="layui-form-label">订单创建时间</label>
             <div class="layui-input-inline">
-                <input type="text" name="createDatetime" id="createDatetime" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                <input type="text" name="orderPtime" id="orderPtime" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
             </div>
         </div>
     </div>
 
-    <!--    <div class="layui-form-item">-->
-    <!--        <div class="layui-inline">-->
-    <!--            <label class="layui-form-label">持续时间</label>-->
-    <!--            <div class="layui-input-inline">-->
-    <!--                <input type="text" name="suretime" id="suretime" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">订单完成时间</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="orderStime" id="orderStime" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">订单金额</label>
+        <div class="layui-input-inline">
+            <input type="text" name="orderPrice" required  lay-verify="required" placeholder="请输入订单金额" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">订单数量</label>
+        <div class="layui-input-inline">
+            <input type="text" name="orderCount" required  lay-verify="required" placeholder="请输入订单数量" autocomplete="off" class="layui-input">
+        </div>
+    </div>
 
     <div class="layui-form-item">
         <div class="layui-input-block">
