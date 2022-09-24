@@ -21,9 +21,19 @@
     <select id="findAll" resultMap="orderMap">
         SELECT * FROM cake.`order`
     </select>
-
+    <!--  删除  -->
     <delete id="deleteById">
         delete from cake.order where o_id = #{id}
+    </delete>
+    <!-- 批量删除  -->
+    <delete id="batchDel">
+        delete from cake.`order`
+        <where>
+            o_id in
+            <foreach collection="array"  open="(" close=")" separator="," item="orderId">
+                #{orderId}
+            </foreach>
+        </where>
     </delete>
 
 </mapper>

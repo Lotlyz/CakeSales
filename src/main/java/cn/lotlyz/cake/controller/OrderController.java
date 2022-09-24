@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -64,6 +65,17 @@ public class OrderController {
     public String deleteById(String id){
         System.out.println("获取到了id为"+id);
         orderService.deleteById(id);
+        return "success";
+    }
+
+    @RequestMapping("batchDel")
+
+    public String batchDel(Integer[] ids){
+        System.out.println("走到这里了");
+        System.out.println(Arrays.toString(ids));//null值
+        if(ids.length>0) {
+            orderService.batchDel(ids);
+        }
         return "success";
     }
 
