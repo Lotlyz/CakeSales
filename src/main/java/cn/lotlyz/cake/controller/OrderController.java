@@ -29,8 +29,8 @@ public class OrderController {
     @RequestMapping("findAll")
     public Map findAll(){
         List<Order> orderList = orderService.findAll();
-        System.out.println(orderList.get(0));
-        System.out.println(orderList);
+//        System.out.println(orderList.get(0));
+//        System.out.println(orderList);
         HashMap<String, Object> map = new HashMap<>();
         map.put("code",0);
         map.put("msg","success");
@@ -59,5 +59,14 @@ public class OrderController {
         return map;
 
     }
+
+    @RequestMapping("deleteById")
+    public String deleteById(String id){
+        System.out.println("获取到了id为"+id);
+        orderService.deleteById(id);
+        return "success";
+    }
+
+
 
 }

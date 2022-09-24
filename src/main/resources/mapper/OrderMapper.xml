@@ -22,4 +22,8 @@
         SELECT * FROM cake.`order`
     </select>
 
+    <delete id="deleteById">
+        delete from cake.order where o_id = #{id}
+    </delete>
+
 </mapper>

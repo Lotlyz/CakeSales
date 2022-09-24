@@ -18,4 +18,9 @@ public class OrderServiceImpl  implements OrderService {
     @Override
     public List<Order> findAll() {return orderMapper.findAll();}
 
+    @Override
+    public void deleteById(String id) {
+        orderMapper.deleteById(id);
+    }
+
 }
