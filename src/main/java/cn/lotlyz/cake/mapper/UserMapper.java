@@ -25,4 +25,9 @@ public interface UserMapper {
             ",uIdCard=#{uIdCard}," +
             "uAddress=#{uAddress} where uid=#{uid}")
     void updateUser(User user);
+
+
+
+@Select("select * from user where uid = #{uid}")
+    User findById(int id);
 }

@@ -12,5 +12,6 @@ public interface UserService {
     void addUser(User user);
     void cutOff(int id);
     void updateUser(User user);
+    List<User> findByIds(Integer[] ids);
 }
 

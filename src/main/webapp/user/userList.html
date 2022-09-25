@@ -58,7 +58,7 @@
                 ,{field:'uRegistrationTime', title:'注册时间', width:200, templet:"<div> {{layui.util.toDateString(d.createDatetime,'yyyy-MM-dd') }} </div>"}
                 ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
             ]]
-            //,page: true
+            // ,page: true
             ,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
                 layout: ['count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
                 ,curr: 1 //设定初始在第 1 页
@@ -94,11 +94,14 @@
                     var data = checkStatus.data;
                     //获取选中数据的id
                     var ids = "";
+
                     for(var i = 0; i < data.length; i++){
-                        ids += "&ids=" + data[i].id;
+                        ids += "&ids=" + data[i].uid;
                     }
+                    console.log(typeof(ids));
+
                     //location对象的href属性表示跳转到指定路径
-                    location.href = "/patient/wirteExcel?ids="+ids
+                    location.href = "User/wirteExcel()?ids="+ids
                     break;
                 case 'getExcelTemplate':
                     //layer.msg(checkStatus.isAll ? '全选': '未全选');

@@ -6,6 +6,7 @@ import cn.lotlyz.cake.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +42,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateUser(User user) {
         userMapper.updateUser(user);
+    }
+
+    @Override
+    public List<User> findByIds(Integer[] ids) {
+        List<User> userList=new ArrayList<User>();
+        for (int i=1;i<ids.length;i++){
+            User user = userMapper.findById(ids[i]);
+            userList.add(user);
+        }
+        System.out.println(userList);
+        return userList;
     }
 
 
