@@ -33,7 +33,7 @@ public class OrderController {
     @RequestMapping("findAll")
     public Map findAll(){
         List<Order> orderList = orderService.findAll();
-        System.out.println(orderList.get(0));
+//        System.out.println(orderList.get(0));
         System.out.println(orderList);
         HashMap<String, Object> map = new HashMap<>();
         map.put("code",0);
