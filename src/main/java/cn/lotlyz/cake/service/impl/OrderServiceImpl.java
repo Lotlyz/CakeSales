@@ -32,4 +32,9 @@ public class OrderServiceImpl  implements OrderService {
         return orderMapper.findByIds(ids);
     }
 
+    @Override
+    public void add(Order order) {
+     orderMapper.add(order);
+    }
+
 }

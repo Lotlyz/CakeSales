@@ -13,4 +13,7 @@ public interface OrderService {
 
 
     List<Order> findByIds(Integer[] ids);
+
+
+    void add(Order order);
 }

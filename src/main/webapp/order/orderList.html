@@ -53,13 +53,16 @@
                 {type: 'checkbox', fixed: 'left'}
                 ,{field:'orderId', title:'订单编号', width:120, fixed: 'left', unresize: true, sort: true}
                 ,{field:'userId', title:'用户编号', width:120, edit: 'text'}
+                ,{field:'userName', title:'用户名', width:120, edit: 'text'}
                 ,{field:'cakeId', title:'蛋糕编号', width:120, edit: 'text'}
+                ,{field:'cakeName', title:'蛋糕名', width:120, edit: 'text'}
+                ,{field:'cakePrice', title:'单价', width:120, edit: 'text'}
                 // ,{field:'OrderPtime', title:'创建时间', width:120, edit: 'text' }
                 // ,{field:'OrderStime', title:'完成时间', width:120, edit: 'text' }
                 ,{field:'orderPtime', title:'创建时间', width:120, templet:"<div> {{layui.util.toDateString(d.orderPtime,'yyyy-MM-dd') }} </div>"}
                 ,{field:'orderStime', title:'完成时间', width:120, templet:"<div> {{layui.util.toDateString(d.orderStime,'yyyy-MM-dd') }} </div>"}
-                ,{field:'orderPrice', title:'订单金额', width:120, edit: 'text'}
                 ,{field:'orderCount', title:'蛋糕数量', width:120, edit: 'text'}
+                ,{field:'orderPrice', title:'订单金额', width:120, edit: 'text'}
                 ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
             ]]
             //,page: true
@@ -131,8 +134,8 @@
         table.on('tool(test)', function(obj){
             var data = obj.data;
             //console.log(obj)
-            console.log(data.orderId);
-            console.log(data.orderId+"-----------------");
+            // console.log(data.orderId);
+            // console.log(data.orderId+"-----------------");
             if(obj.event === 'del'){
                 layer.confirm('真的删除行么', function(index){
                     obj.del();//删除表结构
@@ -162,7 +165,10 @@
                 //     });
                 //     layer.close(index);
                 // });
-
+                // alert(data.orderId+""+data.userId+data.userName+data.cakeId+data.cakeName
+                //     +data.orderPtime+data.orderStime+data.orderPrice+data.orderCount);
+                // console.log(data.orderId+data.userId+data.userName+data.cakeId+data.cakeName
+                // +data.orderPtime+data.orderStime+data.orderPrice+data.orderCount)
                 //由于layui已经帮我们把当前单个对象查询出来了，我们之需要把对象显示出来即可
                 queryOne(data);
             }
@@ -174,43 +180,33 @@
 
 <script>
     function queryOne(data){
+
         layer.open({
             type:1,
-            content: $("#updatePatientForm").html(),
+            content: $("#updateOrderForm").html(),
             title: ['修改页面', 'font-size:18px;'],
             area: ['600px', '600px'],
             success: function(){
-                $("#id").val(data.id);
-                $("#country").val(data.country);
-                $("#province").val(data.province);
-                $("#patientName").val(data.patientName);
-
-                if("1" == data.patientType){
-                    $("#patientType").append("<option value='1' selected>"+'密接'+"</option> <option value='2'>"+'无症状'+"</option>");
-                }else{
-                    $("#patientType").append("<option value='1' >"+'密接'+"</option> <option value='2' selected>"+'无症状'+"</option>");
-                }
-
-                if("3" == data.patientState){
-                    $("#patientState").append("<option value='3' selected>"+'重症'+"</option> <option value='4'>"+'治愈'+"</option> <option value='5'>"+'疑似'+"</option>");
-                }else if("4" == data.patientState){
-                    $("#patientState").append("<option value='3' >"+'重症'+"</option> <option value='4' selected>"+'治愈'+"</option> <option value='5'>"+'疑似'+"</option>");
-                }else if("5" == data.patientState){
-                    $("#patientState").append("<option value='3' >"+'重症'+"</option> <option value='4' >"+'治愈'+"</option> <option value='5' selected>"+'疑似'+"</option>");
-                }
-
-                $("#createDatetime").val(layui.util.toDateString(data.createDatetime,'yyyy-MM-dd'));
-
+                $("#orderId").val(data.orderId);
+                $("#userId").val(data.userId);
+                $("#userName").val(data.userName);
+                $("#cakeId").val(data.cakeId);
+                $("#cakeName").val(data.cakeNrice);
+                $("#orderPtime").val(layui.utiame);
+                $("#cakePrice").val(data.cakePl.toDateString(data.orderPtime,'yyyy-MM-dd'));
+                $("#orderStime").val(layui.util.toDateString(data.orderStime,'yyyy-MM-dd'));
+                $("#orderCount").val(data.orderCount);
+                $("#orderPrice").val(data.cakePrice);
                 //渲染页面
                 layui.form.render();
             },
 
 
-            btn: ['提交', '取消']
+            btn: ['提交','刷新', '取消']
             ,yes: function(index, layero){
 
                 //修改操作
-                $.get("/patient/updatePatient", $("#updatePatient").serialize(),
+                $.get("/order/updateOrder", $("#updateOrder").serialize(),
                     function(data){
                         if("success" == data){
                             location.reload();//刷新当前页面
@@ -219,68 +215,100 @@
 
             }
             ,btn2: function(index, layero){
+                var value = document.getElementById("orderCount").value;
+
+                $("#orderPrice").val((data.cakePrice)*value);
+
+               alert((data.cakePrice)*value)
+
+
+            }
+            ,btn3: function(index, layero){
                 alert("取消")
             }
         });
     }
 </script>
 
-<script type="text/html" id="updatePatientForm">
+<script type="text/html" id="updateOrderForm">
 
-    <form class="layui-form" id="updatePatient">
-
+    <form class="layui-form" id="updateOrder">
         <!-- 把id 作为隐藏域传过去 -->
-        <input type="hidden" name="id" id="id">
-
         <div class="layui-form-item">
-            <label class="layui-form-label">国家</label>
+            <label class="layui-form-label">订单号</label>
             <div class="layui-input-block">
-                <input type="text" name="country" id="country" required  lay-verify="required" placeholder="请输入国家" autocomplete="off" class="layui-input">
+                <input type="text" name="orderId" id="orderId" required  lay-verify="required" disabled="disabled" autocomplete="off" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">省份</label>
+            <label class="layui-form-label">用户编号</label>
             <div class="layui-input-block">
-                <input type="text" name="province" id="province" required  lay-verify="required" placeholder="请输入省份" autocomplete="off" class="layui-input">
+                <input type="text" name="userId" id="userId" required  lay-verify="required" disabled="disabled" autocomplete="off" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">姓名</label>
+            <label class="layui-form-label">用户姓名</label>
             <div class="layui-input-block">
-                <input type="text" name="patientName" id="patientName" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+                <input type="text" name="userName" id="userName" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">类型</label>
+            <label class="layui-form-label">蛋糕编号</label>
             <div class="layui-input-block">
-                <select name="patientType" id="patientType" lay-verify="required">
-
-                </select>
+                <input type="text" name="cakeId" id="cakeId" required  lay-verify="required" placeholder="请输入蛋糕编号" autocomplete="off" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">状态</label>
+            <label class="layui-form-label">蛋糕名</label>
             <div class="layui-input-block">
-                <select name="patientState" id="patientState"  lay-verify="required">
+                <input type="text" name="cakeName" id="cakeName" required  lay-verify="required" placeholder="请输入蛋糕名" autocomplete="off" class="layui-input">
+            </div>
+        </div>
 
-                </select>
+        <div class="layui-form-item">
+            <label class="layui-form-label">单价</label>
+            <div class="layui-input-block">
+                <input type="text" name="cakePrice" id="cakePrice" required  lay-verify="required" disabled="disabled" autocomplete="off" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label class="layui-form-label">开始时间</label>
+                <label class="layui-form-label">创建时间</label>
                 <div class="layui-input-inline">
-                    <input type="date" name="createDatetime" id="createDatetime" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                    <input type="date" name="orderPtime" id="orderPtime" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
                 </div>
             </div>
         </div>
-    </form>
 
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">完成时间</label>
+                <div class="layui-input-inline">
+                    <input type="date" name="orderStime" id="orderStime" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">数量</label>
+            <div class="layui-input-block">
+                <input type="text" name="orderCount" id="orderCount" required  lay-verify="required" placeholder="请输入数量" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">订单金额</label>
+            <div class="layui-input-block">
+                <input type="text" name="orderPrice" id="orderPrice" required  lay-verify="required" disabled="disabled" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+    </form>
 </script>
 
 

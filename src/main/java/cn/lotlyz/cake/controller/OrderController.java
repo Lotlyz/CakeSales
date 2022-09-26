@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -32,8 +33,8 @@ public class OrderController {
     @RequestMapping("findAll")
     public Map findAll(){
         List<Order> orderList = orderService.findAll();
-//        System.out.println(orderList.get(0));
-//        System.out.println(orderList);
+        System.out.println(orderList.get(0));
+        System.out.println(orderList);
         HashMap<String, Object> map = new HashMap<>();
         map.put("code",0);
         map.put("msg","success");
@@ -110,5 +111,15 @@ public class OrderController {
         }
 
     }
+    @RequestMapping("add")
+    public void add(Order order, HttpServletRequest request, HttpServletResponse response)throws IOException{
+        orderService.add(order);
+        //添加完之后，跳转到首页
+        System.out.println(request.getContextPath()+"-----");
+        response.sendRedirect(request.getContextPath() + "/index.html");
+
+    }
+
 
 }
+

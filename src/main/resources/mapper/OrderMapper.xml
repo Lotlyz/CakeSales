@@ -11,7 +11,10 @@
         <id column="o_id" property="orderId" jdbcType="INTEGER" />
         <!--         其他属性用result标签-->
         <result column="uid" property="userId" jdbcType="INTEGER" />
+        <result column="uName" property="userName" jdbcType="VARCHAR" />
         <result column="c_id" property="cakeId" jdbcType="INTEGER" />
+        <result column="c_name" property="cakeName" jdbcType="VARCHAR" />
+        <result column="c_price" property="cakePrice" jdbcType="DOUBLE" />
         <result column="o_PAOtime" property="orderPtime" jdbcType="TIMESTAMP" />
         <result column="o_Stime" property="orderStime" jdbcType="TIMESTAMP" />
         <result column="o_price" property="orderPrice" jdbcType="DOUBLE" />
@@ -19,7 +22,8 @@
     </resultMap>
     <!--  查找全部订单  -->
     <select id="findAll" resultMap="orderMap">
-        SELECT * FROM cake.`order`
+        select cake.order.o_id, cake.order.uid, user.uName, cake.order.c_id, cakelist.c_name, cakelist.c_price, cake.order.o_PAOtime,
+               cake.order.o_Stime, cake.order.o_price, cake.order.o_count from  cake.order inner join user join cakelist on cake.order.uid = user.uid and cake.order.c_id=cake.cakelist.c_id
     </select>
     <!--  删除  -->
     <delete id="deleteById">
@@ -38,7 +42,8 @@
 
     <!--  多个id查询  -->
     <select id="findByIds" resultMap="orderMap">
-        SELECT * FROM cake.`order`
+        SELECT cake.order.o_id, cake.order.uid, user.uName, cake.order.c_id, cakelist.c_name, cake.order.o_PAOtime,
+        cake.order.o_Stime, cake.order.o_price, cake.order.o_count FROM cake.order inner join user join cakelist on cake.order.uid = user.uid and cake.order.c_id=cake.cakelist.c_id
       <where>
           o_id in
           <foreach collection="array"  open="(" close=")" separator="," item="orderId">
@@ -46,6 +51,11 @@
           </foreach>
       </where>
     </select>
+
+    <insert id="add">
+        insert into cake.`order`(uid,c_id,o_PAOtime,o_Stime,o_price,o_count) values
+        (#{userId},#{cakeId},#{orderPtime},#{orderStime},#{orderPrice},#{orderCount})
+    </insert>
 
 
 
