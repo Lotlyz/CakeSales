@@ -75,7 +75,7 @@ public class CouponController {
 //        couponService.add(coupon);
 //
 //        //添加完之后，跳转到首页
-//        response.sendRedirect(request.getContextPath() + "/index.html");
+//        response.sendRedirect(request.getContextPath() + "/home.html");
 //    }
 
     @RequestMapping("add")
@@ -84,7 +84,7 @@ public class CouponController {
         couponService.add(coupon);
         //添加完之后，跳转到首页
 //        System.out.println("想看的路径"+request.getContextPath());
-//        response.sendRedirect(request.getContextPath() + "index.html");
+//        response.sendRedirect(request.getContextPath() + "home.html");
 
         return "success";
     }

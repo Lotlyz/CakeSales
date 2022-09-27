@@ -64,7 +64,7 @@ public class UserController {
 
         userService.addUser(user);
 
-        response.sendRedirect(request.getContextPath() + "/index.html");
+        response.sendRedirect(request.getContextPath() + "/home.html");
 
     }
 
@@ -79,7 +79,7 @@ public class UserController {
     public void update(User user, HttpServletRequest request, HttpServletResponse response) throws IOException{
         userService.updateUser(user);
 
-        response.sendRedirect(request.getContextPath() + "/index.html");
+        response.sendRedirect(request.getContextPath() + "/home.html");
     }
     @RequestMapping("batchDel()")
     public  String batchDel(Integer [] userIds){

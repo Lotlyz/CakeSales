@@ -116,7 +116,7 @@ public class OrderController {
         orderService.add(order);
         //添加完之后，跳转到首页
         System.out.println(request.getContextPath()+"-----");
-        response.sendRedirect(request.getContextPath() + "/index.html");
+        response.sendRedirect(request.getContextPath() + "/home.html");
 
     }
      @RequestMapping("updateOrder")
