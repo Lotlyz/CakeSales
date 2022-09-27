@@ -16,4 +16,8 @@ public interface OrderMapper {
    void batchDel(Integer[] ids);
 
    List<Order> findByIds(Integer[] ids);
+
+   void add(Order order);
+
+   void updateOrder(Order order);
 }
