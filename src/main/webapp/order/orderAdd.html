@@ -60,15 +60,13 @@
 
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit lay-filter="formDemo">确认</button>
+            <button class="layui-btn" id="queren" lay-submit lay-filter="formDemo">确认</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
     </div>
 </form>
 
 <script>
-
-
     //Demo
     layui.use('form', function(){
         var form = layui.form;
@@ -79,6 +77,32 @@
             return true;//true才会走action
         });
     });
+      // var userId = document.getElementById("userId").value;
+      // var var_cid = document.getElementById("cakeId").value;
+      //
+      // var btn = document.getElementById("queren");
+      // btn.onclick=function () {
+      //
+      //     $.get("/order/findByUid",{id:userId}, function(data) {
+      //
+      //         if("success"== data){
+      //             alert("存在用户id为"+var_uid)
+      //
+      //
+      //         }else{
+      //             alert("不存在该用户")
+      //
+      //         }
+      //
+      //     });
+      //
+      //
+      //
+      // }
+
+
+
+
 </script>
 </body>
 

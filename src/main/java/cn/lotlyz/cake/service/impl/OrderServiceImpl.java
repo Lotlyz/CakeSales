@@ -42,4 +42,10 @@ public class OrderServiceImpl  implements OrderService {
         orderMapper.updateOrder(order);
     }
 
+    @Override
+    public void findByUid(Integer id) {
+        orderMapper.findByUid(id);
+    }
+
+
 }

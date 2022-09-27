@@ -20,4 +20,6 @@ public interface OrderMapper {
    void add(Order order);
 
    void updateOrder(Order order);
+
+   void findByUid(Integer id);
 }
