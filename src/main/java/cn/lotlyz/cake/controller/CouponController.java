@@ -69,21 +69,24 @@ public class CouponController {
 
         return map;
     }
-    @RequestMapping("add1")
-    public void add1(Coupon coupon, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        //System.out.println(patient);
-        couponService.add(coupon);
-
-        //添加完之后，跳转到首页
-        response.sendRedirect(request.getContextPath() + "/index.html");
-    }
+//    @RequestMapping("add1")
+//    public void add1(Coupon coupon, HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        //System.out.println(patient);
+//        couponService.add(coupon);
+//
+//        //添加完之后，跳转到首页
+//        response.sendRedirect(request.getContextPath() + "/index.html");
+//    }
 
     @RequestMapping("add")
-    public void add(Coupon coupon){
+    public String add(Coupon coupon,HttpServletRequest request, HttpServletResponse response) throws IOException {
         //System.out.println(patient);
         couponService.add(coupon);
         //添加完之后，跳转到首页
-//        response.sendRedirect(request.getContextPath() + "/index.html");
+//        System.out.println("想看的路径"+request.getContextPath());
+//        response.sendRedirect(request.getContextPath() + "index.html");
+
+        return "success";
     }
 
     @RequestMapping("deleteById")
@@ -101,6 +104,18 @@ public class CouponController {
 
         return "success";
     }
+
+
+     //修改优惠券的发布状态
+    @RequestMapping("updateStatus")
+    public String updateStatus(int id,String  status){
+        Coupon coupon = new Coupon();
+        coupon.setId(id);
+        coupon.setStatus(status);
+        couponService.updateStatus(coupon);
+        return "success";
+    }
+
 
     @RequestMapping("batchDel")
     public String batchDel(Integer [] ids){
