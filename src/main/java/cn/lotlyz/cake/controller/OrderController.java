@@ -34,7 +34,7 @@ public class OrderController {
     public Map findAll(){
         List<Order> orderList = orderService.findAll();
 //        System.out.println(orderList.get(0));
-        System.out.println(orderList);
+       // System.out.println(orderList);
         HashMap<String, Object> map = new HashMap<>();
         map.put("code",0);
         map.put("msg","success");
@@ -121,6 +121,7 @@ public class OrderController {
     }
      @RequestMapping("updateOrder")
     public String updateOrder(Order order){
+         System.out.println(order+"-----");
          orderService.updateOrder(order);
          return "success";
      }

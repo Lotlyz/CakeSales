@@ -191,9 +191,9 @@
                 $("#userId").val(data.userId);
                 $("#userName").val(data.userName);
                 $("#cakeId").val(data.cakeId);
-                $("#cakeName").val(data.cakeNrice);
-                $("#orderPtime").val(layui.utiame);
-                $("#cakePrice").val(data.cakePl.toDateString(data.orderPtime,'yyyy-MM-dd'));
+                $("#cakeName").val(data.cakeName);
+                $("#cakePrice").val(data.cakePrice);
+                $("#orderPtime").val(layui.util.toDateString(data.orderPtime,'yyyy-MM-dd'));
                 $("#orderStime").val(layui.util.toDateString(data.orderStime,'yyyy-MM-dd'));
                 $("#orderCount").val(data.orderCount);
                 $("#orderPrice").val(data.cakePrice);
@@ -202,7 +202,7 @@
             },
 
 
-            btn: ['提交','刷新', '取消']
+            btn: ['提交','取消']
             ,yes: function(index, layero){
 
                 //修改操作
@@ -214,16 +214,8 @@
                     });
 
             }
+
             ,btn2: function(index, layero){
-                var value = document.getElementById("orderCount").value;
-
-                $("#orderPrice").val((data.cakePrice)*value);
-
-               alert((data.cakePrice)*value)
-
-
-            }
-            ,btn3: function(index, layero){
                 alert("取消")
             }
         });
@@ -237,7 +229,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">订单号</label>
             <div class="layui-input-block">
-                <input type="text" name="orderId" id="orderId" required  lay-verify="required" disabled="disabled" autocomplete="off" class="layui-input">
+                <input type="text" name="orderId" id="orderId" required  lay-verify="required" readonly="readonly" autocomplete="off" class="layui-input" >
             </div>
         </div>
 

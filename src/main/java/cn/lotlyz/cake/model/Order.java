@@ -18,8 +18,8 @@ public class Order implements Serializable {
     private Date orderPtime;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date orderStime;
-    private Double orderPrice;
     private Integer orderCount;
+    private Double orderPrice;
 
     public Integer getOrderId() {
         return orderId;
@@ -85,20 +85,20 @@ public class Order implements Serializable {
         this.orderStime = orderStime;
     }
 
-    public Double getOrderPrice() {
-        return orderPrice;
-    }
-
-    public void setOrderPrice(Double orderPrice) {
-        this.orderPrice = orderPrice;
-    }
-
     public Integer getOrderCount() {
         return orderCount;
     }
 
     public void setOrderCount(Integer orderCount) {
         this.orderCount = orderCount;
+    }
+
+    public Double getOrderPrice() {
+        return orderPrice;
+    }
+
+    public void setOrderPrice(Double orderPrice) {
+        this.orderPrice = orderPrice;
     }
 
     @Override
@@ -112,8 +112,8 @@ public class Order implements Serializable {
                 ", cakePrice=" + cakePrice +
                 ", orderPtime=" + orderPtime +
                 ", orderStime=" + orderStime +
-                ", orderPrice=" + orderPrice +
                 ", orderCount=" + orderCount +
+                ", orderPrice=" + orderPrice +
                 '}';
     }
 }
