@@ -64,4 +64,8 @@
     </update>
 
 
+    <select id="findByUid" resultMap="orderMap">
+         select from cake.user where u_id = #{userId}
+    </select>
+
 </mapper>

@@ -126,7 +126,12 @@ public class OrderController {
          return "success";
      }
 
-
+    @RequestMapping("findByUid")
+    public String findByUid(Integer id){
+        orderService.findByUid(id);
+        System.out.println("id为"+id);
+        return "success";
+    }
 
 
 }

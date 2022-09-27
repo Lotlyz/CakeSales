@@ -19,4 +19,8 @@ public interface OrderService {
 
 
   void updateOrder(Order order);
+
+
+  void findByUid(Integer id);
+
 }
