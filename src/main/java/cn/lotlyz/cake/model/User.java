@@ -2,79 +2,83 @@ package cn.lotlyz.cake.model;
 
 
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.xml.crypto.Data;
+import java.io.Serializable;
 import java.util.Date;
 
+@Data
+@NoArgsConstructor
 
-public class User {
-    public int uid;
-    public String uName;
-    public String uPassword;
-    public String uIdCard;
+public class User implements Serializable {
+    public Integer userId;
+    public String userName;
+    public String userPassword;
+    public String userIdCard;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    public Date uRegistrationTime;
-    public String uAddress;
+    public Date userRegistrationTime;
+    public String userAddress;
 
-    public int getUid() {
-        return uid;
+
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUid(int uid) {
-        this.uid = uid;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public String getuName() {
-        return uName;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setuName(String uName) {
-        this.uName = uName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getuPassword() {
-        return uPassword;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public void setuPassword(String uPassword) {
-        this.uPassword = uPassword;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
-    public String getuIdCard() {
-        return uIdCard;
+    public String getUserIdCard() {
+        return userIdCard;
     }
 
-    public void setuIdCard(String uIdCard) {
-        this.uIdCard = uIdCard;
+    public void setUserIdCard(String userIdCard) {
+        this.userIdCard = userIdCard;
     }
 
-    public Date getuRegistrationTime() {
-        return uRegistrationTime;
+    public Date getUserRegistrationTime() {
+        return userRegistrationTime;
     }
 
-    public void setuRegistrationTime(Date uRegistrationTime) {
-        this.uRegistrationTime = uRegistrationTime;
+    public void setUserRegistrationTime(Date userRegistrationTime) {
+        this.userRegistrationTime = userRegistrationTime;
     }
 
-    public String getuAddress() {
-        return uAddress;
+    public String getUserAddress() {
+        return userAddress;
     }
 
-    public void setuAddress(String uAddress) {
-        this.uAddress = uAddress;
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "uid=" + uid +
-                ", uName='" + uName + '\'' +
-                ", uPassword='" + uPassword + '\'' +
-                ", uIdCard='" + uIdCard + '\'' +
-                ", uRegistrationTime=" + uRegistrationTime +
-                ", uAddress='" + uAddress + '\'' +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", userIdCard='" + userIdCard + '\'' +
+                ", userRegistrationTime=" + userRegistrationTime +
+                ", userAddress='" + userAddress + '\'' +
                 '}';
     }
-
 }

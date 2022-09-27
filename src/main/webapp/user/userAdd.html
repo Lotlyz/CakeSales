@@ -14,27 +14,27 @@
     <div class="layui-form-item">
         <label class="layui-form-label">用户名</label>
         <div class="layui-input-inline">
-            <input type="text" name="uName" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+            <input type="text" name="userName" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">密码</label>
         <div class="layui-input-inline">
-            <input type="text" name="uPassword" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            <input type="text" name="userPassword" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">身份证</label>
         <div class="layui-input-inline">
-            <input type="text" name="uIdCard" required  lay-verify="required" placeholder="请输入身份证" autocomplete="off" class="layui-input">
+            <input type="text" name="userIdCard" required  lay-verify="required" placeholder="请输入身份证" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">地址</label>
         <div class="layui-input-inline">
-            <input type="text" name="uAddress" required  lay-verify="required" placeholder="请输入地址" autocomplete="off" class="layui-input">
+            <input type="text" name="userAddress" required  lay-verify="required" placeholder="请输入地址" autocomplete="off" class="layui-input">
         </div>
     </div>
 
@@ -44,7 +44,7 @@
         <div class="layui-inline">
             <label class="layui-form-label">注册时间</label>
             <div class="layui-input-inline">
-                <input type="text" name="uRegistrationTime" id="createDatetime" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                <input type="text" name="userRegistrationTime" id="userRegistrationTime" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
             </div>
         </div>
     </div>
@@ -89,7 +89,7 @@
 
         //日期
         laydate.render({
-            elem: '#createDatetime'
+            elem: '#userRegistrationTime'
             // , type: 'datetime'
         });
         // laydate.render({

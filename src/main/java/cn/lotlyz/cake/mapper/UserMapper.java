@@ -13,21 +13,24 @@ public interface UserMapper {
     @Select("select * from user")
     List<User> findAll();
     //添加用户
-    @Insert("insert into user set uName=#{uName},uPassword=#{uPassword}" +
-            ",uIdCard=#{uIdCard},uRegistrationTime=#{uRegistrationTime}" +
-            ",uAddress=#{uAddress}")
+    @Insert("insert into user set userName=#{userName},userPassword=#{userPassword}" +
+            ",userIdCard=#{userIdCard},userRegistrationTime=#{userRegistrationTime}" +
+            ",userAddress=#{userAddress}")
     void insertUser(User user);
 
-    @Delete("delete  from user where uid=#{uid}")
+    @Delete("delete  from user where userId=#{userId}")
     void deleteByid(int id);
 
-    @Update("update user set uName=#{uName},uPassword=#{uPassword}" +
-            ",uIdCard=#{uIdCard}," +
-            "uAddress=#{uAddress} where uid=#{uid}")
+    @Update("update user set userName=#{userName},userPassword=#{userPassword}" +
+            ",userIdCard=#{userIdCard}," +
+            "userAddress=#{userAddress} where userId=#{userId}")
     void updateUser(User user);
 
 
 
-@Select("select * from user where uid = #{uid}")
+    @Select("select * from user where userId = #{userId}")
     User findById(int id);
+
+
+//    void save(List<User> cachedDataList);
 }
