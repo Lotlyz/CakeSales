@@ -37,4 +37,9 @@ public class OrderServiceImpl  implements OrderService {
      orderMapper.add(order);
     }
 
+    @Override
+    public void updateOrder(Order order) {
+        orderMapper.updateOrder(order);
+    }
+
 }

@@ -119,6 +119,13 @@ public class OrderController {
         response.sendRedirect(request.getContextPath() + "/index.html");
 
     }
+     @RequestMapping("updateOrder")
+    public String updateOrder(Order order){
+         orderService.updateOrder(order);
+         return "success";
+     }
+
+
 
 
 }

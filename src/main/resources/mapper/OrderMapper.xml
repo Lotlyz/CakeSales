@@ -57,6 +57,11 @@
         (#{userId},#{cakeId},#{orderPtime},#{orderStime},#{orderPrice},#{orderCount})
     </insert>
 
+    
+    <update id="updateOrder">
+      update cake.order set uid = #{userId},uName = #{userName},c_id = #{cakeId},c_name = #{cakeName},o_PAOtime = #{orderPtime}
+      ,o_Stime = #{orderStime},o_count = #{orderCount},o_price = #{orderPrice} where o_id = #{orderId}
+    </update>
 
 
 </mapper>
