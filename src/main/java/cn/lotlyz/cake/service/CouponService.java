@@ -36,6 +36,13 @@ public interface CouponService {
     void updateCoupon(Coupon coupon);
 
     /**
+     * 修改优惠券状态
+     * @param coupon
+     */
+    void updateStatus(Coupon coupon);
+
+
+    /**
      * 批量删除
      * @param ids
      */

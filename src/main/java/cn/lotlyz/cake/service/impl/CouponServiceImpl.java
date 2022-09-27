@@ -42,6 +42,11 @@ public class CouponServiceImpl implements CouponService {
     }
 
     @Override
+    public void updateStatus(Coupon coupon) {
+        couponMapper.updateStatus(coupon);
+    }
+
+    @Override
     public void batchDel(Integer[] ids) {
         couponMapper.batchDel(ids);
     }
