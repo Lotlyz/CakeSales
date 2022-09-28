@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 配置mapper对应的名称空间 -->
+<mapper namespace="cn.lotlyz.cake.mapper.CakeMapper">
+
+    <resultMap id="CakeMap" type="cn.lotlyz.cake.model.Cake">
+        <!-- 主键用id标签 -->
+        <id column="c_id" property="cakeId" jdbcType="INTEGER" />
+        <!-- 其他属性用result标签 -->
+        <result column="c_name" property="cakeName" jdbcType="VARCHAR" />
+        <result column="c_price" property="cakePrice" jdbcType="INTEGER" />
+        <result column="c_size" property="cakeSize" jdbcType="INTEGER" />
+        <result column="c_type" property="cakeType" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <!-- 多个id查询 -->
+    <select id="findByIds" resultMap="CakeMap">
+        SELECT *
+        FROM cake
+        <where>
+            c_id in
+            <foreach collection="array"  open="(" close=")" separator="," item="cakeId">
+                #{cakeId}
+            </foreach>
+        </where>
+    </select>
+
+    <!-- 批量插入 -->
+    <insert id="save">
+        insert into cake(
+        c_id,c_name,c_price,c_size,c_type
+        )
+        values
+        <foreach collection="list" separator="," item="cake">
+            (
+            #{cake.cakeId},
+            #{cake.cakeName},
+            #{cake.cakePrice},
+            #{cake.cakeSize},
+            #{cake.cakeType},
+            )
+        </foreach>
+    </insert>
+
+    <!-- 批量删除
+        方法的参数是数组，foreach标签中的collection="array"
+        方法的参数是list集合，foreach标签中的collection="list"
+    -->
+    <delete id="batchDel">
+        delete from cake
+        <where>
+            c_id in
+            <foreach collection="array"  open="(" close=")" separator="," item="cakeId">
+                #{cakeId}
+            </foreach>
+        </where>
+    </delete>
+
+    <!-- 修改蛋糕信息-->
+    <update id="updateCake">
+        update cake set
+                        c_name = #{cakeName},c_price = #{cakePrice},
+                        c_size = #{cakeSize},c_type = #{cakeType}
+        where c_id = #{cakeId}
+    </update>
+
+    <!-- 删除单个 -->
+    <delete id="deleteById">
+        delete from cake where c_id = #{cakeId}
+    </delete>
+
+    <!-- 添加蛋糕 -->
+    <insert id="add">
+        insert into cake(c_name,c_price,c_size,c_type)
+        values(#{cakeName},#{cakePrice},#{cakeSize},#{cakeType})
+    </insert>
+
+    <!-- 查询所有蛋糕，resultMap对应resultMap标签的id值 -->
+    <select id="findAll" resultMap="CakeMap">
+        SELECT *
+        FROM cake
+    </select>
+</mapper>
