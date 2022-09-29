@@ -21,6 +21,7 @@
         <button class="layui-btn layui-btn-sm" lay-event="batchDel">批量删除</button>
         <button class="layui-btn layui-btn-sm" lay-event="writeExcel">批量导出Excel</button>
         <button class="layui-btn layui-btn-sm" lay-event="getExcelTemplate">获取Excel模板</button>
+
         <button type="button" class="layui-btn" id="readFile">
             <i class="layui-icon">&#xe67c;</i>导入Excel文件
         </button>
@@ -114,16 +115,17 @@
                     var ids = "";
 
                     for (var i = 0; i < data.length; i++) {
-                        ids += "&ids=" + data[i].id;
+                        ids += "&ids=" + data[i].cakeId;
                     }
                     //location对象的href属性表示跳转到指定路径
                     location.href = "/cake/wirteExcel?ids=" + ids
 
                     break;
+
                 case 'getExcelTemplate':
                     //layer.msg(checkStatus.isAll ? '全选': '未全选');
 
-                    location.href = "/excel/Cake.xlsx"
+                    location.href = "/excel/cake.xlsx"
 
                     break;
                 //自定义头工具栏右侧图标 - 提示

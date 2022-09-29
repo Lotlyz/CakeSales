@@ -17,7 +17,6 @@ public interface CakeService {
 
     /**
      * 批量查询
-     *
      * @param ids
      */
     List<Cake> findByIds(Integer[] ids);

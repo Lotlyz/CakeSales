@@ -40,7 +40,7 @@
             #{cake.cakeName},
             #{cake.cakePrice},
             #{cake.cakeSize},
-            #{cake.cakeType},
+            #{cake.cakeType}
             )
         </foreach>
     </insert>

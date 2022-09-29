@@ -49,4 +49,10 @@ public interface CakeMapper {
      * @param file
      */
     void upload(MultipartFile file);
+
+    /**
+     * 批量插入数据
+     * @param cachedDataList
+     */
+    void save(List<Cake> cachedDataList);
 }
