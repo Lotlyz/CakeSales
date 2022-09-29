@@ -193,7 +193,9 @@
                     function (data) {
                         if ("success" == data) {
 
-                            location.reload();//刷新当前页面
+                            // location.reload();//刷新当前页面
+                            openUrl('/cake/cakeList.html')
+                            layer.closeAll();
                         }
                     });
 
@@ -235,7 +237,9 @@
                 $.get("/cake/updateCake", $("#updateCake").serialize(),
                     function (data) {
                         if ("success" == data) {
-                            location.reload();//刷新当前页面
+                            // location.reload();//刷新当前页面
+                            openUrl('/cake/cakeList.html')
+                            layer.closeAll();
                         }
                     });
 
@@ -354,5 +358,15 @@
             }
         });
     });
+</script>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+<script type="application/javascript">
+
+    function openUrl(url){
+        // alert(url);
+        $("#center").load(url);
+    }
+
 </script>
 </html>
