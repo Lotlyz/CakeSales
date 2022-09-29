@@ -214,8 +214,9 @@
                 $.get("/coupon/add", $("#CouponAdd").serialize(),
                     function (data) {
                         if ("success" == data) {
-
-                            location.reload();//刷新当前页面
+                            // location.reload();//刷新当前页面
+                            openUrl('/coupon/CouponList.html')
+                            layer.closeAll();
                         }
                     });
 
@@ -239,7 +240,9 @@
             $.get("/coupon/updateStatus"+"?id="+issueId+"&status="+issueStatusW,
                 function (data) {
                     if ("success" == data) {
-                        location.reload();//刷新当前页面
+                        // location.reload();//刷新当前页面
+                        openUrl('/coupon/CouponList.html')
+                        layer.closeAll();
                     }
                 });
 
@@ -250,7 +253,9 @@
             $.get("/coupon/updateStatus"+"?id="+issueId+"&status="+issueStatusY,
                 function (data) {
                     if ("success" == data) {
-                        location.reload();//刷新当前页面
+                        // location.reload();//刷新当前页面
+                        openUrl('/coupon/CouponList.html')
+                        layer.closeAll();
                     }
                 });
         }else{
@@ -298,7 +303,9 @@
                 $.get("/coupon/updateCoupon", $("#updateCoupon").serialize(),
                     function (data) {
                         if ("success" == data) {
-                            location.reload();//刷新当前页面
+                            // location.reload();//刷新当前页面
+                            openUrl('/coupon/CouponList.html')
+                            layer.closeAll();
                         }
                     });
 
@@ -511,5 +518,15 @@
             }
         });
     });
+</script>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+<script type="application/javascript">
+
+    function openUrl(url){
+        // alert(url);
+        $("#center").load(url);
+    }
+
 </script>
 </html>
