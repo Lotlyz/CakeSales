@@ -3,6 +3,7 @@ package cn.lotlyz.cake.controller;
 import cn.lotlyz.cake.model.Cake;
 import cn.lotlyz.cake.model.Coupon;
 import cn.lotlyz.cake.service.CakeService;
+import com.alibaba.excel.EasyExcel;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @RestController
 @RequestMapping("cake")//一级访问路径
@@ -103,6 +103,36 @@ public class CakeControlleer {
         return "success";
     }
 
+    @RequestMapping("wirteExcel")
+    public void wirteExcel(Integer [] ids,HttpServletResponse response) throws IOException {
+//        System.out.println(Arrays.toString(ids));
+        if(ids.length > 0){
+            List<Cake> cakeList = cakeService.findByIds(ids);
+            System.out.println(cakeList);
+
+            System.out.println("系统时间："+ System.currentTimeMillis());
+
+            String time = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+            System.out.println(time);
+
+// 写法2
+            //String fileName = "D:/patient-" + System.currentTimeMillis() + ".xlsx";
+            //String fileName = "D:/patient-" + time + ".xlsx";
+            // 这里 需要指定写用哪个class去写，然后写到第一个sheet，名字为模板 然后文件流会自动关闭
+            // 如果这里想使用03 则 传入excelType参数即可
+            //EasyExcel.write(fileName, Patient.class).sheet("患者列表").doWrite(patientList);
+
+            //以下载的方式打开
+            String fileName = "cake-" + time + ".xlsx";
+            response.setHeader("Cake-Disposition", "attachment;filename="+fileName);
+            //获取输出流
+            ServletOutputStream outputStream = response.getOutputStream();
+            //流的方式写入
+            EasyExcel.write(outputStream, Cake.class).sheet("蛋糕列表").doWrite(cakeList);
+
+        }
+    }
+
     //MultipartFile的参数名必须是：file
     @RequestMapping("upload")
     public Map upload(MultipartFile file){
@@ -116,4 +146,5 @@ public class CakeControlleer {
         }
         return map;
     }
+
 }
