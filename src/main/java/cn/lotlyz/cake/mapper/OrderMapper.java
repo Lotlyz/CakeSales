@@ -2,6 +2,7 @@ package cn.lotlyz.cake.mapper;
 
 import cn.lotlyz.cake.model.Order;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 /**
@@ -22,4 +23,6 @@ public interface OrderMapper {
    void updateOrder(Order order);
 
    void findByUid(Integer id);
+
+   void save(List<Order> cacheDataList);
 }

@@ -42,7 +42,7 @@
 
     <!--  多个id查询  -->
     <select id="findByIds" resultMap="orderMap">
-        SELECT cake.order.o_id, cake.order.uid, user.uName, cake.order.c_id, cakelist.c_name, cake.order.o_PAOtime,
+        SELECT cake.order.o_id, cake.order.uid, user.uName, cake.order.c_id, cakelist.c_name,cakelist.c_price,cake.order.o_PAOtime,
         cake.order.o_Stime, cake.order.o_price, cake.order.o_count FROM cake.order inner join user join cakelist on cake.order.uid = user.uid and cake.order.c_id=cake.cakelist.c_id
       <where>
           o_id in
@@ -67,5 +67,26 @@
     <select id="findByUid" resultMap="orderMap">
          select from cake.user where u_id = #{userId}
     </select>
+
+
+<!--  批量插入  -->
+    <insert id="save">
+        insert into cake.order(o_id,uid,c_id,o_PAOtime,o_Stime,o_price,o_count)
+        values
+        <foreach collection="list" separator="," item="order">
+            (
+            #{order.orderId},
+            #{order.userId},
+            #{order.cakeId},
+            #{order.orderPtime},
+            #{order.orderStime},
+            #{order.orderPrice},
+            #{order.orderCount}
+            )
+        </foreach>
+
+
+    </insert>
+
 
 </mapper>

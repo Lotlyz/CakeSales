@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -132,6 +133,24 @@ public class OrderController {
         System.out.println("id为"+id);
         return "success";
     }
+
+    @RequestMapping("upload")
+    public Map upload(MultipartFile file){
+        HashMap<String, Object> map = new HashMap<>();
+        if(file!=null){
+        System.out.println(file.getOriginalFilename());//输出上传的文件名
+        //调用上传的方法
+        orderService.upload(file);
+
+        map.put("code",0);
+        map.put("msg","success");
+
+    }
+
+        return map;
+
+    }
+
 
 
 }
