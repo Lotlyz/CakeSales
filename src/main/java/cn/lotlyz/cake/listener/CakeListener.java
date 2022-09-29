@@ -39,9 +39,9 @@ public class CakeListener implements ReadListener<Cake> {
     /**
      * 如果使用了spring,请使用这个构造方法。每次创建Listener的时候需要把spring管理的类传进来
      *
-     * @param cakenMapper
+     * @param cakeMapper
      */
-    public CakeListener(CakeMapper cakenMapper) {
+    public CakeListener(CakeMapper cakeMapper) {
         this.cakeMapper = cakeMapper;
     }
 

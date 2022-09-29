@@ -124,7 +124,7 @@ public class CakeControlleer {
 
             //以下载的方式打开
             String fileName = "cake-" + time + ".xlsx";
-            response.setHeader("Cake-Disposition", "attachment;filename="+fileName);
+            response.setHeader("Content-Disposition", "attachment;filename="+fileName);
             //获取输出流
             ServletOutputStream outputStream = response.getOutputStream();
             //流的方式写入

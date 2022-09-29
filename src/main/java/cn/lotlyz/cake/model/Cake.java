@@ -7,23 +7,23 @@ import java.io.Serializable;
 public class Cake implements Serializable {
 
     /** 蛋糕表ID */
-//    @ExcelProperty("蛋糕编号")//指定别名
+    @ExcelProperty("蛋糕编号")//指定别名
     private Integer cakeId;
 
     /** 蛋糕名称 */
-//    @ExcelProperty("蛋糕名称")
+    @ExcelProperty("蛋糕名称")
     private String cakeName;
 
     /** 蛋糕价格 */
-//    @ExcelProperty("蛋糕价格")
+    @ExcelProperty("蛋糕价格")
     private int cakePrice;
 
     /** 蛋糕尺寸 */
-//    @ExcelProperty("蛋糕尺寸")
+    @ExcelProperty("蛋糕尺寸")
     private int cakeSize;
 
     /** 蛋糕种类 */
-//    @ExcelProperty("蛋糕种类")
+    @ExcelProperty("蛋糕种类")
     private String cakeType;
 
     public Cake() {
