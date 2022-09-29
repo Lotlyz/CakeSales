@@ -21,7 +21,7 @@ public class AdminController {
 
     static public String captcha;
     @RequestMapping("/login")
-    public void login(Admin admin, HttpServletRequest request, HttpServletResponse response) throws IOException{
+    public void login(Admin admin, HttpServletRequest request, HttpServletResponse response,HttpSession session) throws IOException{
         System.out.println(captcha);
         System.out.println(admin.getCaptcha());
 
@@ -31,6 +31,8 @@ public class AdminController {
         if (p ==true){
             if(admin.getCaptcha().equals(captcha)){
                 response.sendRedirect(request.getContextPath() + "/home.html");
+                session.setAttribute("admin",admin);
+                System.out.println(admin);
             }else {
                 response.sendRedirect(request.getContextPath() + "/index.html");
             }
